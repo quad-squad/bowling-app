@@ -1,9 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import 'hammerjs';
 import { RouterModule, Routes } from '@angular/router';
+
+import { MatButtonModule,
+         MatToolbarModule } from '@angular/material';
+
+import { AppComponent } from './app.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
 
 const appRoutes: Routes = [
@@ -16,11 +20,14 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    MatButtonModule,
+    MatToolbarModule
 
   ],
   providers: [],
