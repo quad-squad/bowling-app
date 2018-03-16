@@ -1,5 +1,5 @@
 from . import default
-from flask import request, Response, jsonify
+from flask import request, jsonify
 from ..services.Database import Database
 
 db = Database()
@@ -13,6 +13,12 @@ def new_user():
 
     db.add_user(name, email, password, group)
 
-    print(db.get_users())
-
     return jsonify(result=True)
+
+@default.route('/api/get_group', methods=['GET'])
+def get_group():
+    group = request.json.get('group')
+    users = db.get_group(group)
+    return jsonify(result=users)
+
+

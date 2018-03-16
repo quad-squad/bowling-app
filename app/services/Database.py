@@ -17,10 +17,19 @@ class Database(object):
 
     def add_user(self, name, email, password, group):
 
-        self.cur.execute('''INSERT INTO users(name, email, password, group)
-                   VALUES
-                   ('{}', '{}', '{}' ,'{}');'''.format(name, email, password, group))
+        self.cur.execute('''INSERT INTO users
+        (name, email, password, group)
+        VALUES('{}', '{}', '{}' ,'{}');
+        '''.format(name, email, password, group))
 
         self.conn.commit()
+
+    def get_group(self, group):
+        self.cur.execute('''SELECT name FROM users
+                        WHERE team='{}' '''.format(group))
+        return(self.cur.fetchall())
+
+
+
 
 
